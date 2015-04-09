@@ -1,12 +1,13 @@
 # hadoop-2.6.0-windows
 
-**TLDR: mine binaries are published; unless you trust it read on what were causing build errors**
+**TLDR: mine binaries are published; if interested read on how to really build and solve build errors**
 
 To use hadoop (at least its client from MS Windows machine) one is directed to https://wiki.apache.org/hadoop/Hadoop2OnWindows (kind of official documentation). The problem is lack of native libraries for Windows at Apache website. For hadoop 2.2.0 such binaries are https://github.com/srccodes/hadoop-common-2.2.0-bin and they don't work with Hadoop 2.6.0. So my solution was to compile it myself. I have followed BUILDING.txt instructions and guess what, show-stopping build errors. 
 
 ## Pre-requisites:
 1. Fresh Windows 7 VM **without** any MS Visual Studion
-  * **Important**: Uninstall MS VS 2010 Redistributables both for x86 and 64-bit. Otherwise Microsoft's installer will fail with obscure error (read Samples.html bla-bla)
+  * **Important**: Uninstall MS VS 2010 Redistributables both for x86 and 64-bit.
+  Otherwise Microsoft's installer will fail with obscure error (read Samples.html bla-bla)
 2. install oracle java: get and run jdk-7u75-windows-x64.exe
  * no src, no public jre, into C:\jdk7
  * edit system environment variables, add JAVA_HOME with value C:\jdk7
@@ -86,4 +87,4 @@ then
 C:\h260w7> msbuild C:\h260w7\hadoop-common-project\hadoop-common\src\main\native\native.sln
 ```
 
-Get results from C:\h260w7\hadoop-common-project\hadoop-common\target\bin\
+Get results from C:\h260w7\hadoop-common-project\hadoop-common\target\bin
